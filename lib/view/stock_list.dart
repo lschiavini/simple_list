@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:simple_list/model/stock.dart';
 
 class StockList extends StatelessWidget {
-  final List<Stock> stocks;
+  List<Stock>? stocks;
 
-  const StockList({required this.stocks});
+  StockList({required this.stocks});
 
   @override
   Widget build(BuildContext context) {
@@ -12,9 +12,9 @@ class StockList extends StatelessWidget {
       separatorBuilder: (context, index) {
         return Divider(color: Colors.grey[400]);
       },
-      itemCount: stocks.length,
+      itemCount: stocks!.length,
       itemBuilder: (context, index) {
-        final stock = stocks[index];
+        final Stock stock = stocks!.isNotEmpty ? stocks![index] : Stock.emptyStock();
         bool isChgNegative = true;
 
         if (double.parse(stock.chg) > 0) {
@@ -22,7 +22,7 @@ class StockList extends StatelessWidget {
         }
 
         return ListTile(
-          contentPadding: const EdgeInsets.all(10),
+          contentPadding: const EdgeInsets.all(1),
           title: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
