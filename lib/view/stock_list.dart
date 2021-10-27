@@ -10,11 +10,16 @@ class StockList extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.separated(
       separatorBuilder: (context, index) {
-        return Divider(color: Colors.grey[400]);
+        return Divider(
+          color: Colors.grey[400],
+          height: 0,
+          thickness: 1,
+        );
       },
       itemCount: stocks!.length,
       itemBuilder: (context, index) {
-        final Stock stock = stocks!.isNotEmpty ? stocks![index] : Stock.emptyStock();
+        final Stock stock =
+            stocks!.isNotEmpty ? stocks![index] : Stock.emptyStock();
         bool isChgNegative = true;
 
         if (double.parse(stock.chg) > 0) {
@@ -29,10 +34,10 @@ class StockList extends StatelessWidget {
                 Text(stock.symbol,
                     style: const TextStyle(
                         color: Colors.white,
-                        fontSize: 24,
+                        fontSize: 14,
                         fontWeight: FontWeight.w500)),
                 Text(stock.company,
-                    style: const TextStyle(color: Colors.white, fontSize: 20))
+                    style: const TextStyle(color: Colors.white, fontSize: 12))
               ]),
           trailing: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
@@ -41,7 +46,7 @@ class StockList extends StatelessWidget {
                 "\$${stock.price}",
                 style: const TextStyle(
                     color: Colors.white,
-                    fontSize: 24,
+                    fontSize: 18,
                     fontWeight: FontWeight.w500),
               ),
               Container(
@@ -55,7 +60,7 @@ class StockList extends StatelessWidget {
                   "${stock.chg}%",
                   style: const TextStyle(
                     color: Colors.white,
-                    fontSize: 15,
+                    fontSize: 12,
                   ),
                 ),
               )
