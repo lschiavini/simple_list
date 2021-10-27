@@ -71,7 +71,7 @@ class MyHomePage extends State<AppState> {
                       "Watch List",
                       style: TextStyle(
                           color: Colors.white,
-                          fontSize: 20,
+                          fontSize: 14,
                           fontWeight: FontWeight.bold),
                     ),
                   ),
@@ -80,7 +80,7 @@ class MyHomePage extends State<AppState> {
               Padding(
                   padding: const EdgeInsets.only(top: 15),
                   child: SizedBox(
-                      height: MediaQuery.of(context).size.height - 49,
+                      height: MediaQuery.of(context).size.height - 62,
                       child: StreamBuilder<List<Stock>>(
                           stream: onCurrentStockChanged,
                           builder: (BuildContext context,
